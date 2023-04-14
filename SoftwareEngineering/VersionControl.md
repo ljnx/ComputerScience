@@ -1,96 +1,84 @@
 [Pro git](https://git-scm.com/book/en/v2)
 
 ## 2. Git Basics
-### 2.2 Recording Changes to the Reposity
-__git add__
-* start tracking a new file
-* stage a modified tracked file
+### 2.2 Recording Changes to the Reposity & 2.3 Git history & 2.4 undo things
+What:Staging area
+	contains all changes to commit in the next commit.
+How
+	Create					`git add`
+		Start tracking files.		~
+		Add changes in staged files.	~
+	Update
+		rename tracked files		`git mv`
+	Read
+		check the status of all files			`git status`
+			in short form				`-s`
+		disaply the contents of unstaged changes	`git diff`
+	Delete
+		ignore local fiels		`.gitignore`
+		delete tracked files		`git rm`
+			but keep local copies	`--chached`
+		delete a staged file		`git restore`
+			unstage a file
+			restore unstaged changes
 
-__git status__
-* in short format: `-s` or `--short`
+---
 
-__git commit__
-* create a snapshot of the current staging area
-* __[ok]__  skip staging and commmit all modified tracked files `-a`
-* __[no]__  skip staging and commit untrackfiles
-
-__git restore__
-* __[ok]__ restore staging area 
-* __[ok]__ restore modified tracked file 
-  * unstage changes first:`git restore --staged`
-  * then:`git restore`
-* __[no]__ restore untracked files
-
-__git diff__
-* __[ok]__ show the differences of unstaged changes of tracked files
-* __[no]__ show the differences of changes of untracked files
-* __[ok]__ show the differences of changes of staged changes of tracked files `--staged`
-
-__git rm__
-* __[ok]__ delete staged files, this automatically stages the delete action 
-* __[no]__ delete untracked files
-* delete staged files and keep local files `--cached`
-__git mv__
-* __[ok]__ rename tracked files
-* __[no]__ rename untraked files
-
-`.gitignore`
-* ignore local files
-* create a `.gitignore` stage and commit the file.
-
-### 2.3 Viewing the Commit History
-__git log__
-* show the commit history(hashId, author, commit message)
-* show the commit content `-p` or `-patch`
-* show the commit history in oneline `--pretty=oneline`
-* filter the commit history based on time `--since="2 years"`
-* limit the lines of log history. `-2`
-
-### 2.4 Undoing Things
-__git commit --amend--__
-
-workflow1: change the lasted commit message but dont't create a new commit 
-* after make a commit, run this command
-* edit commit message
-
-workflow2: you make a commit, but later find that you forget to add some files
-* after making a commit
-* add more file
-* run this command
-
-
-__git restore__
-
-workflow1: you accidently modifiy a tracked file
-* `git restore <file name>`
-
-workflow2: you want to unstage a change
-* `git restore --staged <file name>`
+What:Commit
+	a snapshot of all staged changes
+How
+	Create	`git commit`
+	Update a commit
+		amend the previous commit		`git commit --amend`
+		add more files to the previous commit	`git commit --amend` 
+	Read						`git log`
+		show the commit content			`-p`
+		show the commit history in oneline	`--neline`
+		filter the commit history by date	`--since="2 years"`
+		get the last n commit history		`-2`
 
 ### 2.5 Working with Remotes
+what:Remote
+	a remote repo
 
-__Create__ 
-`git remote add <name> <url>`
-
-__Read__
- `git remote show <remote>`
-
-__Update__ 
-`git remote rename <old name> <new name>`
-
-__Delete__
-`git remove <remote>`
-
+How
+	create	`git remote add`	
+	read	`git remote show`
+	update	`git remote rename`
+	delete	`git remote remove`
 
 ### 2.6 Tagging
-__what__
-* a named reference to a commit
+what:Tag
+	a named reference to a commit
 
-__how__
-* __Create__ a tag -> `git tag <name> [<hashId>]`
-* __Read__ a tag -> `git tag`
-* __Update__ 
-* __Delete__ a tag -> `git tag -d`
+how
+	Create		`git tag`
+	Read		`git tag show`
+	Update 
+	Delete		`git tag -d`
 
 
+### 2.7 Git Aliases
+What:Alias
+	a combination of git commands, like macro in excel
+How
+	Create	`git congfig --global alias.<name> '<git command>'`
 
+## 3. Git Branching
+
+What:Branch
+	a copy of a repo, where you can make commits
+How
+	Create	
+		create a new branch	`git branch`
+		switch to a branch	`git checkout`
+		create and switch to a new branch	`git checkout -b`
+	Update
+		rename a branch		`git branch --move`
+		rename a remote branch	`git push --set-upstream`
+		merge a branch		`git merge`
+	Read
+		show all branches	`git branch --all`
+	Delete
+		delete a local branch	`git branch -d`
+		delete a remote branch	`git push origin --delete branch`
