@@ -31,6 +31,7 @@ How
 	Update a commit
 		amend the previous commit		`git commit --amend`
 		add more files to the previous commit	`git commit --amend` 
+		
 	Read						`git log`
 		show the commit content			`-p`
 		show the commit history in oneline	`--neline`
@@ -43,8 +44,14 @@ what:Remote
 
 How
 	create	`git remote add`	
-	read	`git remote show`
-	update	`git remote rename`
+	read	
+		download objects and refs from another repo		`git fetch <repo>`
+	update	
+		change remote repo name					`git remote rename`
+		update remote refs along with associated objects	`git push <remote> <branch>`
+		join two or more development histories together		`git merge <remote branch>
+		clone a remote branch					`git checkout -b <new-branch> <start-point>`
+
 	delete	`git remote remove`
 
 ### 2.6 Tagging
@@ -82,3 +89,16 @@ How
 	Delete
 		delete a local branch	`git branch -d`
 		delete a remote branch	`git push origin --delete branch`
+
+Tracking Branches
+When
+	* checking out a local branch from a remote-tracking branch automatically creates a tracking branch
+	* cloning a repo autimatically creates a `master` branch that tracks origin/master
+	
+What
+	local branches that have a direct relationship to a remote branch
+Why
+How
+	track a remote branch
+		
+	
