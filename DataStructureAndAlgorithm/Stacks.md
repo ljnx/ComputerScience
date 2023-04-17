@@ -5,6 +5,7 @@ Test Client
 	Input	`1 2 -`
 	Output	`2 1`
 Implementation	
+	Generic Implementation	Check out `Generics.md`
 	Method1	Linked List
 		Code 	
 		```Java 
